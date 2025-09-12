@@ -5,7 +5,7 @@ import { Billboard } from "@prisma/client";
 import { Trash } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { use, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { ApiAlert } from "@/components/ui/api-alert";
 import { useOrigin } from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
