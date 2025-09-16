@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Enable experimental features for better performance
+  experimental: {
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+  },
 };
 
 export default nextConfig;
