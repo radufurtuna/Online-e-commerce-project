@@ -153,10 +153,14 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                             disabled={loading}
                             onValueChange={field.onChange}
                             value={field.value}
+                             defaultValue={field.value}
                         >
                             <FormControl>
                                 <SelectTrigger>
-                                <SelectValue placeholder="Select a billboard" />
+                                <SelectValue 
+                                defaultValue={field.value}
+                                placeholder="Select a billboard" 
+                                />
                                 </SelectTrigger>
                             </FormControl>
                             <SelectContent>
