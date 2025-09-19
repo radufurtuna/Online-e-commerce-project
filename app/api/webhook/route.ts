@@ -70,7 +70,7 @@ export async function POST(req: Request) {
                     isArchived: true
                 }
             });
-
+/**/ 
             console.log(`Order ${order.id} updated successfully`);
             return new NextResponse(null, { status: 200 });
         } catch (error: any) {
