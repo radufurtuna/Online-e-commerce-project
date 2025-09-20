@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { useOrigin } from "@/hooks/use-origin";
 import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
@@ -43,7 +42,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
 
     const params = useParams();
     const router = useRouter();
-    const origin = useOrigin();
 
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -72,7 +70,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
             router.refresh();
             router.push(`/${params.storeId}/billboards`);
             toast.success(toastMessage);    
-           } catch (error) {
+           } catch {
             toast.error("Something went wrong");
            } finally {
             setLoading(false);
@@ -86,7 +84,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
                 router.refresh();
                 router.push(`/${params.storeId}/billboards`);
                 toast.success("Billboard deleted.");
-            } catch (error) {
+            } catch {
                toast.error("Make sure you removed all categories using this billboard first.");
             } finally {
                setLoading(false);

@@ -5,7 +5,7 @@ import { Store } from "@prisma/client";
 import { Trash } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { use, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
@@ -58,7 +58,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
             await axios.patch(`/api/stores/${params.storeId}`, data);
             router.refresh();
             toast.success("Store updated.");    
-           } catch (error) {
+           } catch {
             toast.error("Something went wrong");
            } finally {
             setLoading(false);
@@ -72,7 +72,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
                 router.refresh();
                 router.push("/");
                 toast.success("Store deleted.");
-            } catch (error) {
+            } catch {
                toast.error("Make sure you removed all products and categories first.");
             } finally {
                setLoading(false);

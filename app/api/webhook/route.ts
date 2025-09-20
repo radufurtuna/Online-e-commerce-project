@@ -15,9 +15,10 @@ export async function POST(req: Request) {
             signature,
             process.env.STRIPE_WEBHOOK_SECRET!
         )
-    } catch (error: any) {
-        console.log(`Webhook signature verification failed: ${error.message}`);
-        return new NextResponse(`Webhook error: ${error.message}`, { status: 400 });
+    } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+        console.log(`Webhook signature verification failed: ${errorMessage}`);
+        return new NextResponse(`Webhook error: ${errorMessage}`, { status: 400 });
     }
 
     console.log(`Received webhook event: ${event.type}`);
@@ -73,9 +74,10 @@ export async function POST(req: Request) {
 /**/ 
             console.log(`Order ${order.id} updated successfully`);
             return new NextResponse(null, { status: 200 });
-        } catch (error: any) {
-            console.log(`Error updating order: ${error.message}`);
-            return new NextResponse(`Database error: ${error.message}`, { status: 500 });
+        } catch (error: unknown) {
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+            console.log(`Error updating order: ${errorMessage}`);
+            return new NextResponse(`Database error: ${errorMessage}`, { status: 500 });
         }
     }
 

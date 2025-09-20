@@ -8,7 +8,7 @@ export async function GET(
     { params }: { params: Promise<{ productId: string, storeId: string }> }
 ) {
     try {
-        const { productId, storeId } = await params;
+        const { productId } = await params;
 
         if (!productId) {
             return new NextResponse("Product ID is required", { status: 400 });

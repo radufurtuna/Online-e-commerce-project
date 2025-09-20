@@ -23,7 +23,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { useOrigin } from "@/hooks/use-origin";
 import { 
     Select,
     SelectTrigger,
@@ -51,7 +50,6 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
 
     const params = useParams();
     const router = useRouter();
-    const origin = useOrigin();
 
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -80,7 +78,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
             router.refresh();
             router.push(`/${params.storeId}/categories`);
             toast.success(toastMessage);    
-           } catch (error) {
+           } catch {
             toast.error("Something went wrong");
            } finally {
             setLoading(false);
@@ -94,7 +92,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                 router.refresh();
                 router.push(`/${params.storeId}/categories`);
                 toast.success("Category deleted.");
-            } catch (error) {
+            } catch {
                toast.error("Make sure you removed all products using this category first.");
             } finally {
                setLoading(false);

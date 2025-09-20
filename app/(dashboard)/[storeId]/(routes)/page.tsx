@@ -1,7 +1,6 @@
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import prismadb from "@/lib/prismadb";
 import { DollarSign, CreditCard, Package } from "lucide-react";
 import { formatter } from "@/lib/utils";
 import { getTotalRevenue } from "@/actions/get-total-revenue";

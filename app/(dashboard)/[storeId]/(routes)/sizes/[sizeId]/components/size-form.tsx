@@ -23,8 +23,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AlertModal } from "@/components/modals/alert-modal";
-import { useOrigin } from "@/hooks/use-origin";
-import ImageUpload from "@/components/ui/image-upload";
 
 const formSchema = z.object({
     name: z.string().min(1),
@@ -43,7 +41,6 @@ export const SizeForm: React.FC<SizeFormProps> = ({
 
     const params = useParams();
     const router = useRouter();
-    const origin = useOrigin();
 
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -72,7 +69,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({
             router.refresh();
             router.push(`/${params.storeId}/sizes`);
             toast.success(toastMessage);    
-           } catch (error) {
+           } catch {
             toast.error("Something went wrong");
            } finally {
             setLoading(false);
@@ -86,7 +83,7 @@ export const SizeForm: React.FC<SizeFormProps> = ({
                 router.refresh();
                 router.push(`/${params.storeId}/sizes`);
                 toast.success("Size deleted.");
-            } catch (error) {
+            } catch {
                toast.error("Make sure you removed all products using this size first.");
             } finally {
                setLoading(false);
